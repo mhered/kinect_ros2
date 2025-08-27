@@ -16,8 +16,9 @@ rclcpp::node_interfaces::NodeBaseInterface::SharedPtr get_depth_image_proc_compo
   rclcpp::NodeOptions options;
   options.use_intra_process_comms(true);
   std::vector<std::string> arguments {
-    "image_rect:=depth/image_raw",
-    "camera_info:=depth/camera_info"
+    "--ros-args ",
+    "--remap image_rect:=depth/image_raw",
+    "--remap camera_info:=depth/camera_info"
   };
   options.arguments(arguments);
 
