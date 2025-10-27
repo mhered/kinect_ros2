@@ -7,6 +7,8 @@ from launch.actions.declare_launch_argument import DeclareLaunchArgument
 from launch.launch_description import LaunchDescription
 from launch.substitutions.launch_configuration import LaunchConfiguration
 
+#import logging
+#logging.getLogger().setLevel(logging.DEBUG)
 
 def generate_launch_description():
     pkg_share = launch_ros.substitutions.FindPackageShare(package="kinect_ros2").find(
@@ -24,13 +26,11 @@ def generate_launch_description():
             Node(
                 package="kinect_ros2",
                 executable="kinect_ros2_node",
-                name="kinect_ros2",
-                namespace="kinect",
+                namespace="kinect"
             ),
             Node(
                 package="rviz2",
                 executable="rviz2",
-                name="rviz2",
                 output="screen",
                 arguments=["-d", LaunchConfiguration("rvizconfig")],
             ),
